@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruteria LAMWL</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="app">
+
+        <h1 class="titulo"> The best frutery :D </h1>
+        <div class="logo">
+            <a href="https://github.com/MerchanDavid2005/Fruteria_LAMWL.git">
+                <img src="./img/logo-removebg-preview.png" alt="logo">
+            </a>
+            <p style="margin-top: 20px; margin-left: 20px; font-weight: 800;">LAMWL</p>
+        </div>
+
+        <div id="todo">
+
+            <div hidden class="compraRealizada">
+                <p hidden class="textoCompra"> ¿Deseas comprar? </p>
+                <button hidden class="cancelarCompra" @click="cancelarCompra()"> X </button>
+                <button hidden class="pedidoRealizado" @click="pedidoRealizado"> Aceptar </button>
+                <button hidden class="botonConfirmarCompra" @click="compraConfirmada()"> Aceptar </button>
+            </div>
+
+            <div id="pedidos">
+
+                <h1>Realiza tu pedido</h1>
+                <p>¿Que otras frutas deseas que esten en la pagina?</p>
+                <input class="textoPedido" type="text" placeholder="Haz tu pedido">
+                <input @click="realizarPedido" type="button" value="Pedir">
+
+                <div v-if="datoUno == 1">
+                    <img v-if="datoUno == 1" src="./img/zanahoria.jpeg" alt="zanahoria">
+                </div>
+                <b v-if="datoUno == 1"> ¿Sabias que la zanahoria ayuda a mejorar la vista? </b>
+
+                <div v-if="datoDos == 1">
+                    <img v-if="datoDos == 1" src="./img/fresa.jpeg" alt="fresa">
+                </div>
+                <b v-if="datoDos == 1"> ¿Sabias que las fresas son la única fruta con las semillas en el exterior?, pueden tener hasta 200 </b>
+
+            <!-- -------------------------------------------------------------------------------------------------------------- -->
+
+                <div v-if="datoUno == 2">
+                    <img v-if="datoUno == 2" src="./img/frutasColor.jfif" alt="frutasColor">
+                </div>
+                <b v-if="datoUno == 2">¿Sabias que las frutas que tienen un mismo color suelen tener las mismas propiedades? </b>
+
+                <div v-if="datoDos == 2">
+                    <img v-if="datoDos == 2" src="./img/aguacate.jfif" alt="aguacate">
+                </div>
+                <b v-if="datoDos == 2"> ¿Sabias que se cree que el aguacate es la fruta más nutritiva que existe? </b>
+
+            <!-- ------------------------------------------------------------------------------------------------------------------------- -->
+
+                <div v-if="datoUno == 3">
+                    <img v-if="datoUno == 3" src="./img/Mango.jpg" alt="mango">
+                </div>
+                <b v-if="datoUno == 3"> ¿Sabias que el mango tiene más de 20 vitaminas y minerales? </b>
+
+                <div v-if="datoDos == 3">
+                    <img v-if="datoDos == 3" src="./img/kiwi.jfif" alt="kiwi">
+                </div>
+                <b v-if="datoDos == 3"> ¿Sabias que la fruta con más contenido en vitamina C es el kiwi? </b>
+
+            <!-- ---------------------------------------------------------------------------------------------------------- -->
+
+                <div v-if="datoUno == 4">
+                    <img v-if="datoUno == 4" src="./img/tomate.jfif" alt="tomate">
+                </div>
+                <b v-if="datoUno == 4"> ¿Sabias que la fruta más consumida en el mundo es el tomate? </b>
+
+                <div v-if="datoDos == 4">
+                    <img v-if="datoDos == 4" src="./img/manzanaSilvestre.jfif" alt="manzanaSilvestre">
+                </div>
+                <b v-if="datoDos == 4"> ¿Sabias que las manzanas silvestres están en peligro de extinción debido a los efectos del cambio climático? </b>
+
+                <!-- ------------------------------------------------------------------------------------------------------------ -->
+
+                <div v-if="datoUno == 5">
+                    <img v-if="datoUno == 5" src="./img/arandanos.jpg" alt="arandanos">
+                </div>
+                <b v-if="datoUno == 5"> ¿Sabias que los arándanos pueden ayudar a prevenir la aparición de cistitis? </b>
+
+                <div v-if="datoDos == 5">
+                    <img v-if="datoDos == 5" src="./img/maracuya.jpg" alt="maracuya">
+                </div>
+                <b v-if="datoDos == 5"> ¿Sabias que el maracuya es llamado la fruta de la pasion? </b>
+
+           </div>
+
+            <div id="frutasTotales">
+
+                <div class="menuRestablecer">
+
+                    <b> NO puedes comprar mas de la mitad de frutas en una compra </b>
+                    <button @click="restablecerPagina">Restablecer pagina</button>
+
+                </div>
+
+                <div class="fruta" v-for="(fruta, index) of frutas">
+            
+                    <h1> {{fruta.nombre}} </h1>
+                    <div class="divImagenFruta" @click="cargaImagen(index)"> <i style="color: #01f"> Ver fruta </i> </div>
+                    <p v-if="fruta.cantidad > 0"> Cantidad: <span style="color: #ffa;"> {{fruta.cantidad}} </span> </p>
+                    <p v-if="fruta.cantidad == 0"> Agotado </p>
+                    <p> ¿Cuantas deseas comprar? </p>
+                    <div class="unidadComprar">
+                        <span style="color: #fff" v-if="fruta.compras >= 0"> {{fruta.compras}} </span> 
+                        <span style="color: #fff;" v-if="fruta.compras < 0"> 0 </span>
+                        <button class="sumarCompra" v-if="fruta.cantidad > fruta.compras" @click="fruta.compras++; fruta.cantidad--"> + </button> 
+                        <button class="restarCompra" v-if="fruta.compras > 0" @click="fruta.compras--; fruta.cantidad++"> - </button>
+                    </div>
+                    <b> Precio por unidad: <span style="color: #0f8;"> ${{fruta.precio}} </span> </b>
+                    <button v-if="fruta.compras > 0" class="botonCompra" @click="compra(index)"> Comprar </button>
+                    
+                </div>
+
+            </div>
+
+            <div id="usuario">
+
+                <div class="comprasTotales">
+
+                    <h1> Tus compras </h1>
+
+                    <div class="compra" v-for="(compra, index) of comprasTotales">
+    
+                        <p> Compra numero: <span> {{index + 1}} </span> </p>
+                        <p> Fruta: <span> {{compra.fruta}} </span> </p>
+                        <p> Cantidad: <span>{{compra.cantidad}} </span> </p>
+                        <p> Valor de compra: <span> {{compra.valor}} </span> </p>
+    
+                    </div>
+    
+                    <h4 style="margin: 20px 0;"> Gasto total: <span style="color: #f00;"> ${{recaudoTotal}} </span> </h4>
+
+                </div>
+
+                <div class="pedido">
+
+                    <h1>Tus pedidos</h1>
+
+                    <ul v-for="(pedido, index) of tusPedidos">
+
+                        <li class="nombrePedido"> <span style="color: #ff0;"> {{pedido.pedido}} </span> </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
