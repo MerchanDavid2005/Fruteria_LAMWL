@@ -62,6 +62,7 @@ img{
 
 #pedidos > h1{
 
+    text-align: center;
     color: #f47;
 
 }
@@ -297,6 +298,7 @@ img{
 
 .comprasTotales > h1{
 
+    text-align: center;
     font-size: 2.4em;
     margin: 10px 0;
     color: #f47;
@@ -328,6 +330,7 @@ img{
 
 .pedido > h1{
 
+    text-align: center;
     font-size: 2.4em;
     margin: 10px 0;
     color: #f47;

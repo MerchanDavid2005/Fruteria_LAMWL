@@ -16,7 +16,7 @@
 
         <h1 class="titulo"> The best frutery :D </h1>
         <div class="logo">
-            <a href="https://github.com/MerchanDavid2005/Fruteria_LAMWL.git">
+            <a href="https://github.com/MerchanDavid2005" target="_blank">
                 <img src="./img/logo-removebg-preview.png" alt="logo">
             </a>
             <p style="margin-top: 20px; margin-left: 20px; font-weight: 800;">LAMWL</p>
@@ -113,7 +113,7 @@
                     <div class="divImagenFruta" @click="cargaImagen(index)"> <i style="color: #01f"> Ver fruta </i> </div>
                     <p v-if="fruta.cantidad > 0"> Cantidad: <span style="color: #ffa;"> {{fruta.cantidad}} </span> </p>
                     <p v-if="fruta.cantidad == 0"> Agotado </p>
-                    <p> ¿Cuantas deseas comprar? </p>
+                    <p v-if="fruta.cantidad > 0"> ¿Cuantas deseas comprar? </p>
                     <div class="unidadComprar">
                         <span style="color: #fff" v-if="fruta.compras >= 0"> {{fruta.compras}} </span> 
                         <span style="color: #fff;" v-if="fruta.compras < 0"> 0 </span>
