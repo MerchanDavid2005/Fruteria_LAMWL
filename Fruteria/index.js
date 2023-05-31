@@ -169,7 +169,23 @@ const app = new Vue({
             let pedidoRealizado = document.querySelector(".pedidoRealizado")
             let textoCompra = document.querySelector(".textoCompra")
 
-            if (pedido.value != ""){
+            if (pedido.value.length > 15){
+
+                Menupedidos.style.pointerEvents = "none"
+                totalFrutas.style.pointerEvents = "none"
+
+                compraRealizada.removeAttribute("hidden")
+    
+                textoCompra.textContent = "Por favor ingresa un nombre mas corto"
+            
+                textoCompra.removeAttribute("hidden")
+                pedidoRealizado.removeAttribute("hidden")
+                compraRealizada.style.padding = "50px"
+                compraRealizada.style.outline = "5px solid #000"
+                compraRealizada.style.width = "550px"
+                
+            }
+            else if (pedido.value != ""){
 
                 Menupedidos.style.pointerEvents = "none"
                 totalFrutas.style.pointerEvents = "none"
@@ -184,7 +200,8 @@ const app = new Vue({
                 compraRealizada.style.outline = "5px solid #000"
                 compraRealizada.style.width = "550px"
 
-            }else{
+            }
+            else{
 
                 Menupedidos.style.pointerEvents = "none"
                 totalFrutas.style.pointerEvents = "none"
@@ -222,16 +239,21 @@ const app = new Vue({
             compraRealizada.style.padding = ""
             compraRealizada.style.outline = ""
 
-            let now = new Date()
+            if (pedido.value.length > 0 && pedido.value.length < 15){
 
-            this.tusPedidos.push({
+                let now = new Date()
 
-                fecha: now,
-                pedido: pedido.value
+                this.tusPedidos.push({
+    
+                    fecha: now,
+                    pedido: pedido.value
+    
+                })
+    
+                localStorage.setItem("Pedidos", JSON.stringify(this.tusPedidos))
 
-            })
+            }
 
-            localStorage.setItem("Pedidos", JSON.stringify(this.tusPedidos))
             location.reload()
 
         },
