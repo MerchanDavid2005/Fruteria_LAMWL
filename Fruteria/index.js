@@ -72,7 +72,15 @@ const app = new Vue({
 
             }else{
 
-                textoCompra.textContent = `¿Deseas comprar ${this.frutas[index].compras} ${nombreFruta}s por un precio de ${precioCompra}?`
+                if (this.frutas[index].nombre.endsWith("n") == true) {
+
+                    textoCompra.textContent = `¿Deseas comprar ${this.frutas[index].compras} ${nombreFruta}es por un precio de ${precioCompra}?`
+
+                }else{
+
+                    textoCompra.textContent = `¿Deseas comprar ${this.frutas[index].compras} ${nombreFruta}s por un precio de ${precioCompra}?`
+
+                }
 
             }
         
@@ -214,14 +222,17 @@ const app = new Vue({
             compraRealizada.style.padding = ""
             compraRealizada.style.outline = ""
 
+            let now = new Date()
+
             this.tusPedidos.push({
 
+                fecha: now,
                 pedido: pedido.value
 
             })
 
             localStorage.setItem("Pedidos", JSON.stringify(this.tusPedidos))
-            pedido.value = ""
+            location.reload()
 
         },
 
