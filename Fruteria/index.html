@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/logo-removebg-preview.ico">
 </head>
 <body>
     
@@ -35,7 +36,7 @@
 
                 <h1>Realiza tu pedido</h1>
                 <p>¿Que otras frutas deseas que esten en la pagina?</p>
-                <input class="textoPedido" type="text" placeholder="Haz tu pedido">
+                <input class="textoPedido" @keyup.enter="realizarPedido" type="text" placeholder="Haz tu pedido">
                 <input @click="realizarPedido" type="button" value="Pedir">
 
                 <div v-if="datoUno == 1">
@@ -152,7 +153,7 @@
 
                     <ul v-for="(pedido, index) of tusPedidos">
 
-                        <li class="nombrePedido"> <span style="color: #ff0;"> {{pedido.pedido}} </span> <span> {{pedido.fecha}} </span> </li>
+                        <li class="nombrePedido"> <span style="color: #ff0;"> {{pedido.pedido}} </span> <span> fecha: {{pedido.fecha}} </span> </li>
 
                     </ul>
 

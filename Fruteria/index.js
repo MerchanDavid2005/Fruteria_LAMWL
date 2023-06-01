@@ -13,8 +13,8 @@ const app = new Vue({
             {nombre: "Papaya", img: './img/papaya.jpeg', cantidad: 20, compras: 0, precio: 3500},
             {nombre: "Naranja", img: './img/naranja.jpeg', cantidad: 20, compras: 0, precio: 2000},
             {nombre: "Mandarina", img: './img/mandarina.jpeg', cantidad: 20, compras: 0, precio: 2000},
-            {nombre: "Uva", img: './img/Uva.jpeg', cantidad: 20, compras: 0, precio: 200},
-            {nombre: "Limon", img: './img/limon.jpeg', cantidad: 20, compras: 0, precio: 500},
+            {nombre: "Uva", img: './img/Uva.jpeg', cantidad: 80, compras: 0, precio: 200},
+            {nombre: "Limon", img: './img/limon.jpeg', cantidad: 40, compras: 0, precio: 500},
             {nombre: "Durazno", img: './img/durazno.jpeg', cantidad: 20, compras: 0, precio: 5000},
             {nombre: "Borojo", img: './img/borojo.jpeg', cantidad: 20, compras: 0, precio: 3500},
             
@@ -243,9 +243,13 @@ const app = new Vue({
 
                 let now = new Date()
 
+                let day = now.getDate()
+                let month = now.getMonth()
+                let year = now.getFullYear()
+
                 this.tusPedidos.push({
     
-                    fecha: now,
+                    fecha: `${day}/${month}/${year}`,
                     pedido: pedido.value
     
                 })
@@ -254,7 +258,7 @@ const app = new Vue({
 
             }
 
-            location.reload()
+            pedido.value = ""
 
         },
 
