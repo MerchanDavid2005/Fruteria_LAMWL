@@ -89,7 +89,6 @@ const app = new Vue({
             botonCancelar.removeAttribute("hidden")
             compraRealizada.style.padding = "50px"
             compraRealizada.style.outline = "5px solid #000"
-            compraRealizada.style.width = "550px"
 
             this.tuCompra = [this.frutas[index].nombre, this.frutas[index].compras, precioCompra]
             
@@ -182,7 +181,6 @@ const app = new Vue({
                 pedidoRealizado.removeAttribute("hidden")
                 compraRealizada.style.padding = "50px"
                 compraRealizada.style.outline = "5px solid #000"
-                compraRealizada.style.width = "550px"
                 
             }
             else if (pedido.value != ""){
@@ -198,7 +196,6 @@ const app = new Vue({
                 pedidoRealizado.removeAttribute("hidden")
                 compraRealizada.style.padding = "50px"
                 compraRealizada.style.outline = "5px solid #000"
-                compraRealizada.style.width = "550px"
 
             }
             else{
@@ -214,7 +211,6 @@ const app = new Vue({
                 pedidoRealizado.removeAttribute("hidden")
                 compraRealizada.style.padding = "50px"
                 compraRealizada.style.outline = "5px solid #000"
-                compraRealizada.style.width = "550px"
 
             }
 
